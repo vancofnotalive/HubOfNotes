@@ -1,0 +1,199 @@
+body , html {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(5, 5, 5);
+    display: flex;
+    align-items: center;
+    --body_H: 100dvh;
+    --body_W: 100dvw;
+    height: var(--body_H);
+    width: var(--body_W);
+    overflow: hidden;
+    --heading-container_H: 30dvh;
+}
+* {
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+img {
+    width: 100%;
+}
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+button:focus {
+    outline: none;
+}
+input {
+    background-color: transparent;
+    outline: none;
+    border: 1dvh solid white;
+}
+input:focus {
+    outline: none;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.main {
+    position: relative;
+    height: var(--body_H);
+    width: var(--body_W);
+    overflow-y: scroll;
+    z-index: +9;
+    --heading-texts_padding-left: calc(var(--body_W) - 90dvw) !important;
+}
+.main-gradient {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to bottom, black, transparent);
+    height: calc(var(--body_H) - 50%);
+    width: 100%;
+    transition: 1s ease-out;
+    opacity: 1;
+}
+.main-bg {
+    position: absolute;
+    width: 100vw;
+}
+.heading-container {
+    height: var(--heading-container_H);
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    align-items: center ;
+}
+.heading-texts {
+    color: white;
+    padding-left: calc(var(--body_W) - 90dvw) !important;
+}
+.heading-texts h1:first-child {
+    font-size: 6dvh;
+}
+.heading-texts h1:last-child {
+    font-size: 3dvh;
+}
+.notes {
+    width: 100%;
+    height: calc(var(--body_H) - var(--heading-container_H));
+    overflow-y: scroll;
+}
+.folder {
+    width: 100%;
+    padding-left: calc(var(--body_W) - 90dvw) !important;
+overflow: hidden;
+margin: 2% 0 !important;
+filter: brightness(80%);
+}
+.folder-heading {
+    position: relative;
+    height: 6dvh;
+    padding: 0.5% 0 !important;
+    width: 30%;
+display: flex;
+align-items: center;
+color: white;
+border-bottom: 1px solid rgb(241, 241, 241);
+transition: 0.1s;
+}
+.folder:hover .folder-heading {
+    width: 31%;
+}
+.folder-heading h1 {
+    font-size: 3dvh;
+}
+
+.folder-heading-icon {
+    width: 5%;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 50%;
+padding: 0.8% !important;
+margin: 0 2% !important;
+}
+.folder-file {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 10dvh;
+    padding : 2% 0 !important;
+cursor: pointer;
+}
+.folder-file::after {
+    content: "";
+    background: linear-gradient(to right, rgb(0, 0, 0) , transparent);
+    opacity: 0.1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+z-index: -1;
+transition: 0.1s ease-out;
+}
+.folder-file:hover::after {
+opacity: 0.3;
+}
+
+.folder-file h1 {
+    position: relative;
+    font-size: 2dvh;
+    color: white;
+display: flex;
+align-items: center;
+}
+.folder-file h1 i {
+position: absolute;
+right: 100%;
+translate: -100% 0;
+}
+.folder-file h2 {
+    font-size: 1.2dvh;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+.folder-file a {
+    display: flex;
+font-size: 1dvh;
+margin: 1% 0 !important;
+background-color: white;
+color: black;
+width: fit-content;
+border: 1px solid transparent;
+border-radius: 2dvh;
+align-items: center;
+padding: 0.3% 0.6% !important;
+justify-content: space-evenly;
+}
+.folder-file i {
+    font-size: 1dvh;
+}
+.folder-file a:hover i {
+    rotate: -30deg;
+}
+.collapse-folder {
+    position: absolute;
+right: 0;
+display: flex;
+align-items: center;
+width: fit-content;
+padding: 0 1dvh !important;
+font-size: 1.5dvh;
+}
+.collapse-folder i {
+margin: 0 10% !important;
+transform: rotate(0deg);
+transition: 0.4s ease-out;
+color: rgb(221, 221, 221);
+cursor: pointer;
+}
