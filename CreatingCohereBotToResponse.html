@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/CreateingCohereBotToResponse.css">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(12, 12, 12);
+            display: flex;
+            justify-content: center;
+            --gs_height: 5vh;
+        }
+        * {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            padding: 0 !important;
+            margin: 0 !important;
+            text-decoration: none;
+            flex-shrink: 0 !important;
+        }
+        main {
+            height: 100vh;
+            width: 90vw;
+            display: flex;
+            flex-direction: column;
+        }
+        .gs {
+            height: var(--gs_height);
+            width: 100%;
+        }
+        main h1 {
+            width: 80%;
+            align-self: center;
+            text-align: center;
+            font-size: 2vw;
+            padding: 5vh !important;
+        }
+        main li {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+            font-size: 1vw;
+        }
+        main li a {
+            color: rgb(30, 154, 255);
+            font-weight: 600;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .code {
+            position: relative;
+            border: 0.1vh solid transparent;
+            background-color: rgb(19, 19, 19);
+            border-radius: 0.5vw;
+            width: 50%;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 4vh 2.5vw !important;
+            font-size: 1vw;
+        }
+        .code::after {
+            content: "Code";
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 0.8vw;
+            height: 3vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            border-bottom: 0.1vh solid white;
+        }
+        .code p {
+            width: 80%;
+            font-size: 0.9vw;
+        }
+        .note {
+            width: 50%;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(36, 36, 36);
+            border: 0.1vh solid transparent;
+            border-radius: 1vw;
+            padding: 0.5vh 1vw !important;
+            font-size: 0.8vw;
+            color: rgb(255, 153, 0);
+            translate: 0 -50%;
+        }
+        .gsh {
+            height: 2.5vh;
+            width: 100%;
+        }
+        .refname {
+            position: relative;
+            display: inline;
+            font-weight: 100;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-style: italic;
+        }
+        .refname::after {
+            content: ")";
+        }
+        .refname::before {
+            content: "(";
+        }
+        .name {
+            display: inline;
+            color: rgb(0, 156, 143);
+        }
+        span {
+            height: 5vh;
+            width: 100%;
+        }
+        .comment {
+            color: green;
+            display: inline;
+        }
+        div {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+
+        <h1>Taking response from Cohere LLM bot and returning json through action method and displaying on View </h1>
+        <li>Open PMC and Install these two packages</li>
+        <section class="gsh"></section>
+        <section class="code">
+        </section>
+        <section class="gs"></section>
+        <li>Generate <a href="https://dashboard.cohere.com/" target="_blank">Cohere api key</a> by going in the side bar PLATFORM > Dashboard > API Keys </li>
+        <section class="gsh"></section>
+        <li>Edit appsetting.json</li>
+        <section class="gsh"></section>
+        <section class="code">
+        </section>
+        <section class="note">Your appsetting.json can be different but the section <div class="name">Cohere</div> should be the same and if you change it you will have to change program.cs too</section>
+
+        <section class="gs"></section>
+        <li>Add new folder named "Services" or whatever you want to call</li>
+        <li>Add a class in the folder<div class="refname">Services</div> named <div class="name">CohereBot.cs</div></li>
+        <li>Paste this code in the class<div class="refname">CohereBot.cs</div></li>   
+        <section class="gsh"></section>
+        <section class="code">
+        </section>
+        <section class="gs"></section>
+        <li>Open controller and put this code</li>
+        <section class="gsh"></section>
+        <section class="code">
+        </section>
+        <li>Important codes here are these and other can be changed depending on requirements</li>
+        <section class="gsh">   </section>
+        <section class="code">
+        </section>
+        <section class="gs"></section>
+        <section class="code"></section>
+        <section class="gs"></section>
+        <li>Open Program.cs and add these to dependency injection</li>
+        <section class="gsh"></section>
+        <section class="code">
+        </section>
+        <section class="gs"></section>
+        <li>For example the program.cs for this project that is is simple looks like this</li>
+        <section class="gsh"></section>
+        <section class="code">
+        </section>
+        <section class="gs"></section>
+        <li>Write this ajax function that will generate responses, for example a "send"</li>
+        <section class="code" id="ajax">
+            function generateResponse() {<br />
+                let userInput = document.getElementById("userInput").value.trim();<br />
+            <br />
+                $.ajax({<br />
+                    url: `@Url.Action("Index", "Home")`,<br />
+                    type: "POST",<br />
+                    data: {<br />
+                        userInput: userInput<br />
+                    },<br />
+                    success: function (response) {<br />
+                        console.log(response)<br />
+                        document.getElementById("response").innerHTML = response.message;<br />
+                    }<br />
+                });<br />
+            }
+            
+        </section>
+        <section class="gs"></section>
+
+    </main>
+    <script>
+        var codes = [`dotnet add package Microsoft.Extensions.Http
+        dotnet add package Newtonsoft.Json` , `{
+    "Cohere": {
+        "ApiKey": "YOUR_API_KEY" 
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AllowedHosts": "*"
+    }
+    ` , `using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
+
+    namespace CohereMvcApp.Services
+    {
+        public class CohereService
+        {
+            private readonly HttpClient _httpClient;
+            private readonly string _apiKey;
+
+            public CohereService(HttpClient httpClient, IConfiguration configuration)
+            {
+                _httpClient = httpClient;
+                _apiKey = configuration["Cohere:ApiKey"];
+            }
+
+            public async Task<string> GenerateText(string prompt)
+            {
+                _httpClient.DefaultRequestHeaders.Clear();
+                _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_apiKey}");
+
+                var content = new StringContent(JsonConvert.SerializeObject(new
+                {
+                    model = "command-xlarge-nightly",
+                    prompt = prompt,
+                    max_tokens = 50
+                }), Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("https://api.cohere.ai/v1/generate", content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                // Response handling
+                dynamic completion = JsonConvert.DeserializeObject(result);
+                return completion.generations[0].text;
+            }
+        }
+    }
+    ` , `using Microsoft.AspNetCore.Mvc;
+    using CohereMvcApp.Services;
+    using System.Threading.Tasks;
+
+    namespace CohereMvcApp.Controllers
+    {
+        public class HomeController : Controller
+        {
+            private readonly CohereService _cohereService;
+            // other services can be added no need to create another constructor 
+            public HomeController(CohereService cohereService)
+            {
+                _cohereService = cohereService;
+                //other services
+            }
+            // the action method that returns view make it [HttpGet] and the view that will retrive input make it [HttpPost]
+            [HttpGet]
+            public IActionResult Index()
+            {
+                return View();
+            }
+            // action method where to recive user input
+            [HttpPost]
+            public async Task<IActionResult> Index(string userInput)
+            {
+                if (string.IsNullOrEmpty(userInput))
+                {
+                    ViewBag.ChatGptResponse = "Please enter some text.";
+                    return View();
+                }
+
+                var response = await _cohereService.GenerateText(userInput);
+                ViewBag.ChatGptResponse = response;
+
+                return Json(new { message = response });
+            }
+        }
+    }
+    ` , `   private readonly CohereService _cohereService;
+    // other services can be added no need to create another constructor 
+    public HomeController(CohereService cohereService)
+    {
+        _cohereService = cohereService;
+        //other services
+    }
+     ` , `[HttpPost]
+    public async Task<IActionResult> Index(string userInput)
+    {
+        if (string.IsNullOrEmpty(userInput))
+        {
+            ViewBag.ChatGptResponse = "Please enter some text.";
+            return View();
+        }
+
+        var response = await _cohereService.GenerateText(userInput);
+        ViewBag.ChatGptResponse = response;
+
+        return Json(new { message = response });
+    }` , `// Add services to the container.
+    builder.Services.AddControllersWithViews();
+    builder.Services.AddHttpClient();  // HttpClient registration
+    builder.Services.AddSingleton<CohereService>();  // Register CohereService
+    ` , `using CohereMvcApp.Services;
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Add services to the container.
+    builder.Services.AddControllersWithViews();
+    builder.Services.AddHttpClient();  // HttpClient registration
+    builder.Services.AddSingleton<CohereService>();  // Register CohereService
+
+    var app = builder.Build();
+
+    // Configure the HTTP request pipeline.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Home/Error");
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    app.UseRouting();
+    app.UseAuthorization();
+
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    app.Run();
+    ` , ``]
+    var codesElement = document.getElementsByClassName("code");
+    for(let i = 0; i < codesElement.length; i++) {
+        if(codesElement[i].id == "ajax") {
+            continue;
+        }
+        codesElement[i].innerText = codes[i % codes.length]
+        let tempTextArea = document.createElement("textarea");
+        
+    }
+
+    </script>
+</body>
+</html>

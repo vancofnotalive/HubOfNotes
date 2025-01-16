@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Framework Core - .Set&lt;&gt; Method</title>
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        h1, h3 {
+            color: #FFFFFF;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #333333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .term {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        ul {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="content-box">
+        <h1>Entity Framework Core - .Set&lt;&gt; Method</h1>
+        
+        <section class="term">Key Points:</section>
+        <ul>
+            <li>The <code>.Set&lt;&gt;</code> method belongs to Entity Framework Core.</li>
+            <li>It is used to get a <code>DbSet&lt;&gt;</code> for the specified type during runtime.</li>
+            <li>This method allows you to dynamically determine the <code>DbSet&lt;&gt;</code> for a given entity type.</li>
+        </ul>
+
+        <section class="term">Example Code:</section>
+        <pre>
+<code>
+_context.Set<T>().Add(user);
+</code>
+        </pre>
+
+        <section class="term">Explanation:</section>
+        <ul>
+            <li>At runtime, the <code>.Set&lt;T&gt;()</code> method resolves to the corresponding entity type.</li>
+            <li>For example:
+                <ul>
+                    <li>When <code>T</code> is replaced with <code>User</code>, the code becomes <code>_context.Users.Add(user);</code>.</li>
+                </ul>
+            </li>
+            <li>This approach enables dynamic handling of entities without hardcoding the <code>DbSet&lt;&gt;</code>.</li>
+        </ul>
+    </section>
+
+</body>
+</html>

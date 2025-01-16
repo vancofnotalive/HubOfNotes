@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Injection and Interface Implementation</title>
+
+    <!-- Include Prism.js and its theme -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-csharp.min.js"></script>
+
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg'); /* Provided image */
+            background-size: cover; /* Ensures the image covers the entire viewport */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Fix the background so it doesn't scroll */
+            color: #FFFFFF; /* White text for contrast */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure full height */
+            overflow-y: auto; /* Allow scrolling when content overflows */
+        }
+
+        /* Make the content container slightly transparent */
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.5); 
+            /* Dark background with transparency */
+            background-color: rgba(30, 30, 30, 0.5); /* Dark background with transparency */
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        /* Hide scrollbar */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            color: #FFFFFF; /* White headings */
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #FFFFFF; /* Subtle border */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        /* Code block styling */
+        pre {
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            color: #FFFFFF; /* White text */
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Highlight important class names and terms in green */
+        .green {
+            color: #32CD32; /* LimeGreen */
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px; /* Reduce padding on smaller screens */
+            }
+
+            h1 {
+                font-size: 24px; /* Smaller header size for smaller screens */
+            }
+
+            pre {
+                padding: 15px; /* Less padding for small screens */
+                font-size: 14px;
+            }
+
+            section.content-box {
+                padding: 20px; /* Reduce padding inside content box */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 22px; /* Smaller header for very small screens */
+            }
+
+            section.content-box {
+                padding: 15px; /* Further reduce padding for very small screens */
+            }
+
+            pre {
+                font-size: 12px; /* Smaller font size for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Content Box 1 -->
+    <section class="content-box">
+        <h1>
+            Dependency Injection and Interface Implementation
+        </h1>
+
+        <h2>
+            When you have to add your class to dependency injection for an object
+        </h2>
+        <p>
+            That class should be implementing an interface.
+        </p>
+
+        <h2>
+            Example of a class implementing an interface in Clean Architecture
+        </h2>
+
+        <pre><code class="language-csharp">
+public class <span class="green">VillaRepository</span> : <span class="green">IVillaRepository</span>
+{
+    private readonly <span class="green">ApplicationDbContext</span> _db;
+
+    public <span class="green">VillaRepository</span>(<span class="green">ApplicationDbContext</span> db)
+    {
+        _db = db;
+    }
+
+    public void Add(<span class="green">Villa</span> villa)
+    {
+        _db.Add(villa);
+    }
+
+    public void Remove(<span class="green">Villa</span> villa)
+    {
+        _db.Villas.Remove(villa);
+    }
+
+    public void Save()
+    {
+        _db.SaveChanges();
+    }
+
+    public void Update(<span class="green">Villa</span> villa)
+    {
+        _db.Villas.Update(villa);
+    }
+
+    public <span class="green">Villa</span> Get(Expression&lt;Func&lt;<span class="green">Villa</span>, bool&gt;&gt; filter, string? includeProperties = null)
+    {
+        IQueryable&lt;<span class="green">Villa</span>&gt; query = _db.Villas;
+        query = query.Where(filter);
+        
+        if (includeProperties is not null)
+        {
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',', '-', '_' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+        }
+        return query.FirstOrDefault()!;
+    }
+
+    public IEnumerable&lt;<span class="green">Villa</span>&gt; GetAll(Expression&lt;Func&lt;<span class="green">Villa</span>, bool&gt;? filter = null, string? includeProperties = null)
+    {
+        IQueryable&lt;<span class="green">Villa</span>&gt; query = _db.Villas;
+
+        if (filter is not null)
+        {
+            query = query.Where(filter);
+        }
+        if (includeProperties is not null)
+        {
+            foreach (var includeProperty in includeProperties.Split(new char[] {',' , '-' , '_'} , StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+        }
+        return query.ToList();
+    }
+}
+</code></pre>
+
+        <h2>
+            Explanation
+        </h2>
+        <p>
+            It is a class that implements an interface named '<span class="green">IVillaRepository</span>' because in Clean Architecture, it is a strict rule that a class should implement an interface when registered in Dependency Injection for object construction.
+        </p>
+        <p>
+            Since an interface is used to declare common method names and parameters without the body, this ensures that you don’t forget any method when implementing the class.
+        </p>
+        <p>
+            The '<span class="green">VillaRepository</span>' class implements the following methods defined in the '<span class="green">IVillaRepository</span>' interface:
+        </p>
+        <ul>
+            <li><span class="green">Add()</span></li>
+            <li><span class="green">Update()</span></li>
+            <li><span class="green">Remove()</span></li>
+            <li><span class="green">Get()</span></li>
+            <li><span class="green">GetAll()</span></li>
+            <li><span class="green">Save()</span></li>
+        </ul>
+        <p>
+            This class can then be used by the controller, for example, '<span class="green">VillaController</span>', to interact with the database.
+        </p>
+        <p>
+            In Clean Architecture, the class should always implement an interface for Dependency Injection, ensuring that the methods and contracts are strictly adhered to.
+        </p>
+
+        <h2>
+            IVillaRepository Interface
+        </h2>
+
+        <pre><code class="language-csharp">
+public interface <span class="green">IVillaRepository</span>
+{
+    IEnumerable&lt;<span class="green">Villa</span>&gt; GetAll(Expression&lt;Func&lt;<span class="green">Villa</span>, bool&gt;? filter = null , string? includeProperties = null);
+    <span class="green">Villa</span> Get(Expression&lt;Func&lt;<span class="green">Villa</span>, bool&gt; filter , string? includeProperties = null);
+    void Add(<span class="green">Villa</span> villa);
+    void Update(<span class="green">Villa</span> villa);
+    void Remove(<span class="green">Villa</span> villa);
+    void Save();
+}
+</code></pre>
+
+        <h2>
+            Explanation
+        </h2>
+        <p>
+            This interface holds the declarations of 6 methods that will be implemented by the class '<span class="green">VillaRepository</span>'.
+        </p>
+        <p>
+            It is a convention to name the implementing class the same as the interface without the '<span class="green">I</span>' prefix.
+        </p>
+        <p>
+            From C# 8 onwards, interfaces can have access modifiers and default implementations. Before C# 8, adding an access modifier or a method body would result in a compile-time error.
+        </p>
+
+    </section>
+
+</body>
+</html>

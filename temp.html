@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    
+</style>
+</head>
+<body>
+
+    <div class="code"></div>
+    <div class="code"></div>
+<script>
+var codes = [`using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+
+namespace CohereMvcApp.Services
+{
+    public class CohereService
+    {
+        private readonly HttpClient _httpClient;
+        private readonly string _apiKey;
+
+        public CohereService(HttpClient httpClient, IConfiguration configuration)
+        {
+            _httpClient = httpClient;
+            _apiKey = configuration["Cohere:ApiKey"];
+        }
+
+        public async Task<string> GenerateText(string prompt)
+        {
+            _httpClient.DefaultRequestHeaders.Clear();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_apiKey}");
+
+            var content = new StringContent(JsonConvert.SerializeObject(new
+            {
+                model = "command-xlarge-nightly",
+                prompt = prompt,
+                max_tokens = 50
+            }), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("https://api.cohere.ai/v1/generate", content);
+            var result = await response.Content.ReadAsStringAsync();
+
+            // Response handling
+            dynamic completion = JsonConvert.DeserializeObject(result);
+            return completion.generations[0].text;
+        }
+    }
+}
+` , ``];
+
+// Get all elements with class "code"
+var codesBlock = document.getElementsByClassName("code");
+
+// Loop through all the elements with the 'code' class
+for (let i = 0; i < codesBlock.length; i++) {
+    // Assign the corresponding code block to each element
+    codesBlock[i].innerText = codes[i % codes.length];  // This ensures that the codes array loops if there are more blocks than codes
+}
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

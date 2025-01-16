@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Notes</title>
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg'); /* Provided image */
+            background-size: cover; /* Ensures the image covers the entire viewport */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Fix the background so it doesn't scroll */
+            color: #FFFFFF; /* White text for contrast */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure full height */
+            overflow-y: auto; /* Allow scrolling when content overflows */
+        }
+
+        /* Make the content container slightly transparent */
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.8); /* Dark background with transparency */
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        /* Hide scrollbar */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            color: #FFFFFF; /* White headings */
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #FFFFFF; /* Subtle border */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: square; /* Square bullet points */
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        /* Paragraph styling */
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px; /* Reduce padding on smaller screens */
+            }
+
+            h1 {
+                font-size: 24px; /* Smaller header size for smaller screens */
+            }
+
+            ul {
+                padding-left: 15px; /* Adjust padding for smaller screens */
+            }
+
+            li {
+                font-size: 16px; /* Adjust list item font size */
+            }
+
+            section.content-box {
+                padding: 20px; /* Reduce padding inside content box */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 22px; /* Smaller header for very small screens */
+            }
+
+            li {
+                font-size: 14px; /* Even smaller font for list items */
+            }
+
+            section.content-box {
+                padding: 15px; /* Further reduce padding for very small screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Content Box 1 -->
+    <section class="content-box">
+        <h1>Removing HTML Tags in C#</h1>
+        <ul>
+            <li>To remove HTML tags from a string in C#, use the <code>Regex</code> class.</li>
+            <li>The <code>Regex.Replace()</code> method takes parameters: <code>whichString, inWhichPattern, whatToReplacePatternWith</code>.</li>
+            <li>You can use ChatGPT to generate a regex pattern based on your requirements.</li>
+        </ul>
+    </section>
+
+</body>
+</html>

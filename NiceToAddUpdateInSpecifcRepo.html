@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Architecture - Update Method</title>
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg'); /* Provided image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        h1, h3 {
+            color: #FFFFFF;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #333333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .term {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            background-color: #333;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="content-box">
+        <h1>Clean Architecture - Update Method</h1>
+        
+        <section class="term">Explanation:</section>
+        <ul>
+            <li><strong>In Clean Architecture, it is recommended that in a generic repository you do not declare an update method.</strong></li>
+            <li><strong>Reason:</strong> The update method's logic and parameters can vary depending on the specific needs of a controller or service.</li>
+            <li><strong>Solution:</strong> Instead of a generic update method, you should define it in a specific repository for the particular use case. This allows more flexibility in how the update method behaves.</li>
+            <li>The generic repsitory should contains methods only using or having need of < T ></li>
+            <li>Mostly it is recommended that you put save() method in specific repository(specifc interface) as well</li>
+        </ul>
+    </section>
+
+</body>
+</html>

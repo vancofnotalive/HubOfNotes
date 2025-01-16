@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Branch Merging Notes</title>
+
+    <!-- Include Prism.js and its theme -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-git.min.js"></script>
+
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Make the content container slightly transparent */
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.8); /* Dark background with transparency */
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        /* Hide scrollbar */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #FFFFFF;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        /* Code block styling */
+        pre {
+            background-color: transparent; /* Transparent background for code blocks */
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            color: #FFFFFF; /* White code text */
+        }
+
+        /* Highlight important keywords in green */
+        .green {
+            color: #32CD32;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            pre {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            section.content-box {
+                padding: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            section.content-box {
+                padding: 15px;
+            }
+
+            pre {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Content Box -->
+    <section class="content-box">
+        <h1>
+            Git Branch Merging Notes
+        </h1>
+
+        <h2>
+            Merging a Feature Branch into the Main Branch
+        </h2>
+        <p>
+            Whenever you merge a feature branch (e.g., <span class="green">feature/login</span>) into the main branch (e.g., <span class="green">master</span> or <span class="green">main</span>), an additional commit is created.
+        </p>
+
+        <h2>
+            Additional Commit for Merge Recording
+        </h2>
+        <p>
+            This extra commit records the merge process, capturing details such as:
+        </p>
+        <ul>
+            <li>
+                The <span class="green">branch name</span> being merged.
+            </li>
+            <li>
+                The <span class="green">timestamp</span> of the merge.
+            </li>
+            <li>
+                A list of <span class="green">merged changes</span>.
+            </li>
+        </ul>
+
+        <h2>
+            Example
+        </h2>
+        <pre><code class="language-git">
+# Assuming you are on the main branch
+git checkout main
+
+# Merging a feature branch
+git merge feature/login
+        </code></pre>
+
+        <h2>
+            Summary
+        </h2>
+        <p>
+            Git automatically creates a commit to log the merge process, ensuring a record is maintained for traceability and collaboration.
+        </p>
+    </section>
+
+</body>
+</html>

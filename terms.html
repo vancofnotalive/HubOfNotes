@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminology Notes</title>
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg'); /* Provided image */
+            background-size: cover; /* Ensures the image covers the entire viewport */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Fix the background so it doesn't scroll */
+            color: #FFFFFF; /* White text for contrast */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure full height */
+            overflow-y: auto; /* Allow scrolling when content overflows */
+        }
+
+        /* Make the content container slightly transparent */
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.8); /* Dark background with transparency */
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8); /* Subtle shadow */
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        /* Hide scrollbar */
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1, h2 {
+            color: #FFFFFF; /* White headings */
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #333333; /* Subtle border */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #ffffff; /* White border for parent heading */
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        /* Term styling */
+        .term {
+            color: white; /* Highlighted term color */
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        /* Paragraph styling */
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        span {
+            color: rgb(158, 158, 158) !important;
+        }
+
+        /* Code block styling */
+        code {
+            background-color: #333; /* Dark background for code */
+            color: #FFFFFF; /* White text */
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: #333; /* Dark background for preformatted text */
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            color: #FFFFFF; /* White text */
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px; /* Reduce padding on smaller screens */
+            }
+
+            h1 {
+                font-size: 24px; /* Smaller header size for smaller screens */
+            }
+
+            h2 {
+                font-size: 20px; /* Smaller subheader size for smaller screens */
+            }
+
+            code {
+                font-size: 14px; /* Adjust code font size */
+            }
+
+            pre {
+                padding: 15px; /* Less padding for small screens */
+                font-size: 14px;
+            }
+
+            section.content-box {
+                padding: 20px; /* Reduce padding inside content box */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 22px; /* Smaller header for very small screens */
+            }
+
+            h2 {
+                font-size: 18px; /* Smaller subheader for very small screens */
+            }
+
+            section.content-box {
+                padding: 15px; /* Further reduce padding for very small screens */
+            }
+
+            pre {
+                font-size: 12px; /* Smaller font size for very small screens */
+            }
+        }
+
+        .content-box {
+            transition: 0.1s;
+        }
+        
+        .content-box:hover {
+            transform: scale(1.020);
+            background-color: #222;
+            filter: brightness(110%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Terms -->
+    <section class="content-box">
+        <section class="term">Type = Class</section>
+        <p><span>Declares a type as a class in C#.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Expression&lt;Func&lt;ClassName, Bool&gt;&gt;</section>
+        <p><span>A Lambda Expression example: <code>x => x.Property</code>.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Delegate</section>
+        <p><span>Defined as a Lambda Expression (e.g., <code>x => x</code>).</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">VB</section>
+        <p><span>Short for Visual Basics.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">MVVM</section>
+        <p>Model View View Model<br>
+            <span>A software architectural pattern that separates concerns into Model, View, and ViewModel.</span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">SDK</section>
+        <p>Software Development Kit<br>
+            <span>A collection of tools, libraries, and documentation to help developers build applications for specific platforms.</span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Razor Page | Razor View | View</section>
+        <p><span>All refer to <code>view.cshtml</code>.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Semantic Tags</section>
+        <p><span>Includes <code>&lt;header&gt;</code> and <code>&lt;nav&gt;</code>, which are used for navigation bars.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">SOLID Principle</section>
+        <p>
+            <span>
+                S => Single Responsibility Principle<br>
+                O => Open-Closed Principle<br>
+                L => Liskov Substitution Principle<br>
+                I => Interface Segregation Principle<br>
+                D => Dependency Inversion Principle
+            </span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Strongly Typed View</section>
+        <p><span>Example: <code>@model Student</code>.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Decouple | Loosely Coupled</section>
+        <p><span>Refers to components being less dependent on each other.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">POCOs | Model | Entity | Domain</section>
+        <p>
+            <span>POCOs: Plain Old CLR Objects. They refer to classes in a code-first approach.</span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Assembly</section>
+        <p><span>The second name for a project.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">ProjectName.Web</section>
+        <p><span>Represents ProjectName.Presentation.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">ProjectName.Core</section>
+        <p><span>Refers to ProjectName.Model/Entities/POCOs/Class.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Required Keyword</section>
+        <p><span>Used to make a property non-nullable.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Layer</section>
+        <p><span>Each layer represents a project/assembly.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Directive</section>
+        <p><span>In C#, <code>using</code> is called a directive.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">View Engine</section>
+        <p><span>Refers to <code>_ViewStart</code>.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Configuration File</section>
+        <p><span>Usually <code>appsettings.json</code>.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Version Control | Source Control</section>
+        <p><span>Refers to Git (not GitHub).</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Checkout</section>
+        <p><span>Switch to a specific branch in Git.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Seed Data</section>
+        <p><span>Initial data added to a database table.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">MR | PR</section>
+        <p>
+            <span>
+                GitLab: Merge Request (MR)<br>
+                GitHub: Pull Request (PR)<br>
+                Both mean the same thing.
+            </span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Deferred Execution</section>
+        <p><span>Query generated but not executed (e.g., <code>_context.Table</code>).</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Immediate Execution</section>
+        <p><span>Query executed immediately (e.g., <code>_context.Table.ToList()</code>).</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">DOM</section>
+        <p><span>Document Object Model.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Bundled CSS | Minification</section>
+        <p>
+            <span>
+                Browser combines all CSS into one file (bundling) and reduces size (minification).
+            </span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Referential Integrity Constraint | Foreign Key</section>
+        <p><span>Refers to child/associate key constraints in SQL.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Polymorphism</section>
+        <p>
+            <span>
+                Compile-Time: Static Polymorphism (e.g., overloading).<br>
+                Runtime: Dynamic Polymorphism (e.g., overriding).
+            </span>
+        </p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Web Layer</section>
+        <p><span>Represents the presentation layer.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Consume</section>
+        <p><span>To call or use a method.</span></p>
+    </section>
+
+    <section class="content-box">
+        <section class="term">Deprecated</section>
+        <p><span>Indicates outdated NuGet packages or features.</span></p>
+    </section>
+
+</body>
+</html>

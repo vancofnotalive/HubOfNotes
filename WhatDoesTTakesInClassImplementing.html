@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Explanation - IImplementingClassName&lt;T&gt;</title>
+    <style>
+        /* Full page background image */
+        body {
+            background-image: url('https://i.pinimg.com/originals/3d/15/44/3d1544e118e7fa67a45a7aaf56337a0b.jpg'); /* Provided image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        section.content-box {
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        h1, h3 {
+            color: #FFFFFF;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #333333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .term {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            background-color: #333;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="content-box">
+        <h1>Code Explanation: IImplementingClassName&lt;T&gt;</h1>
+        
+        <section class="term">Code:</section>
+        <pre><code>
+public class IImplementingClassName&lt;T&gt; where T : class {}
+        </code></pre>
+
+        <section class="explanation">
+            <h3>Explanation:</h3>
+            <ul>
+                <li><strong>The line '&lt;T&gt;'</strong> means that when you access the class methods, there will be a placeholder that you need to pass when creating an object (via Dependency Injection). You will pass the entity you want the method to work with, such as creating CRUD operations for a controller.</li>
+                <li><strong>The line after '&lt;T&gt;', 'where T : class'</strong> means that '&lt;T&gt;' will only accept reference types. To make '&lt;T&gt;' accept value types instead, you would replace 'class' with the 'struct' keyword.</li>
+                <li><strong>Alternatively, you can write this same code using 'is' instead of ':'</strong> The code will look like this:</li>
+                <pre><code>
+public class IImplementingClassName&lt;T&gt; where T is class
+                </code></pre>
+            </ul>
+        </section>
+    </section>
+
+</body>
+</html>
